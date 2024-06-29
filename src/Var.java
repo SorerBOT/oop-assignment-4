@@ -42,7 +42,7 @@ public final class Var implements Expression {
     }
     @Override
     public Boolean evaluate(Map<String, Boolean> assignment) throws Exception {
-        final Boolean newValue = this.expression.evaluate();
+        final Boolean newValue = this.expression.evaluate(assignment);
         for (Map.Entry<String, Boolean> entry : assignment.entrySet()) {
             if (!this.name.equals(entry.getKey())) {
                 continue;
