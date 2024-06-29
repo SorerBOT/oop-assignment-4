@@ -38,4 +38,9 @@ public class Val implements Expression {
     public Expression assign(String var, Expression expression) {
         return expression;
     }
+
+    @Override
+    public Expression nandify() {
+        return new Val(this.value);
+    }
 }
