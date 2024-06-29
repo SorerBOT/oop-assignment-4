@@ -50,4 +50,10 @@ public interface Expression {
      * @return the new expression with the variable replaced
      */
     Expression assign(String var, Expression expression);
+
+    /**
+     * Nandifies the expression.
+     * @return the nandified expression
+     */
+    Expression nandify();
 }
