@@ -32,7 +32,7 @@ public final class Not implements Expression {
 
     @Override
     public String toString() {
-        return "~" + this.expression.toString();
+        return "~(" + this.expression.toString() + ")";
     }
 
     @Override
