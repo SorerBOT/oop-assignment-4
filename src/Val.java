@@ -43,4 +43,9 @@ public class Val implements Expression {
     public Expression nandify() {
         return new Val(this.value);
     }
+
+    @Override
+    public Expression norify() {
+        return this.nandify().norify();
+    }
 }
