@@ -10,6 +10,6 @@ public class ExpressionOutput {
     public static void main(String[] args) throws Exception {
         Expression ex = new Not(new And(new Val(false), new Val(true)));
 
-        System.out.println(ex.evaluate());
+        System.out.println(ex.toString());
     }
 }
