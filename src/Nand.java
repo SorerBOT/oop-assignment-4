@@ -28,4 +28,8 @@ public class Nand extends BinaryExpression {
             this.getSecondExpression().nandify()
         );
     }
+    @Override
+    public Expression norify() {
+        
+    }
 }

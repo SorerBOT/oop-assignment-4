@@ -56,4 +56,10 @@ public interface Expression {
      * @return the nandified expression
      */
     Expression nandify();
+
+    /**
+     * Norifies the expression.
+     * @return the norified expression
+     */
+    Expression norify();
 }
