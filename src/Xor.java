@@ -34,4 +34,8 @@ public class Xor extends BinaryExpression {
             ).nandify()
         ).nandify();
     }
+    @Override
+    public Expression norify() {
+        return this.nandify().norify();
+    }
 }
