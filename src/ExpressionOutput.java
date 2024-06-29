@@ -11,5 +11,6 @@ public class ExpressionOutput {
         Expression ex = new Not(new And(new Val(false), new Val(true)));
 
         System.out.println(ex.toString());
+        System.out.println(ex.evaluate());
     }
 }
