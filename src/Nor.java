@@ -23,6 +23,11 @@ public class Nor extends BinaryExpression {
     }
     @Override
     public Expression nandify() {
-        return new Not(new Or(this.getFirstExpression(), this.getSecondExpression())).nandify();
+        return new Not(
+            new Or(
+                this.getFirstExpression().nandify(),
+                this.getSecondExpression().nandify()
+            ).nandify()
+        ).nandify();
     }
 }
