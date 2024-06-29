@@ -18,7 +18,28 @@ public final class Var implements Expression {
         this.name = new String(name);
         this.expression = expression;
     }
+    /**
+     * Copy constructor of the Var class.
+     * @param var the Var instance to be copied
+     */
+    public Var(Var var) {
+        this(var.getName(), var.getExpression());
+    }
 
+    /**
+     * Getter of the Name field.
+     * @return the name field
+     */
+    public String getName() {
+        return new String(this.name);
+    }
+    /**
+     * Getter of the expression field.
+     * @return the expression field
+     */
+    public Expression getExpression() {
+        return this.expression;
+    }
     @Override
     public Boolean evaluate(Map<String, Boolean> assignment) throws Exception {
         final Boolean newValue = this.expression.evaluate();
@@ -51,6 +72,9 @@ public final class Var implements Expression {
 
     @Override
     public Expression assign(String var, Expression expression) {
-        
+        if (this.name.equals(var)) {
+            return expression;
+        }
+        return new Var(this);
     }
 }

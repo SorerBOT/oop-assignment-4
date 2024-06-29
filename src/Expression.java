@@ -1,6 +1,9 @@
 import java.util.Map;
 import java.util.List;
 
+/**
+ * The Expression interface.
+ */
 public interface Expression {
     /**
      * Evaluate the expression using the variable values provided
