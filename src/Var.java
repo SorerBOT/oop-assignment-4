@@ -11,8 +11,8 @@ public final class Var implements Expression {
 
     /**
      * Constructor of the Var class.
-     * @param name the name of the Variable
-     * @param expression the expression which is represented by the Variable.
+     * @param name the name of the Var
+     * @param expression the expression which is represented by the Var.
      */
     public Var(String name, Expression expression) {
         this.name = new String(name);
@@ -24,6 +24,13 @@ public final class Var implements Expression {
      */
     public Var(Var var) {
         this(var.getName(), var.getExpression());
+    }
+    /**
+     * Constructor of the Var class.
+     * @param name the name of the Var
+     */
+    public Var(String name) {
+        this(name, null);
     }
 
     /**
