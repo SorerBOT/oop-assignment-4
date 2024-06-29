@@ -44,4 +44,8 @@ public final class Not implements Expression {
     public Expression nandify() {
         return new Nand(this.expression.nandify(), this.expression.nandify());
     }
+    @Override
+    public Expression norify() {
+        return this.nandify().norify();
+    }
 }
