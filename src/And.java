@@ -23,6 +23,11 @@ public class And extends BinaryExpression {
     }
     @Override
     public Expression nandify() {
-        return new Not(new Nand(this.getFirstExpression(), this.getSecondExpression())).nandify();
+        return new Not(
+            new Nand(
+                this.getFirstExpression().nandify(),
+                this.getSecondExpression().nandify()
+            )
+        ).nandify();
     }
 }
