@@ -28,4 +28,8 @@ public class Or extends BinaryExpression {
             new Not(this.getSecondExpression()).nandify()
         );
     }
+    @Override
+    public Expression norify() {
+        return this.nandify().norify();
+    }
 }
