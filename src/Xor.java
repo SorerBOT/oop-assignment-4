@@ -21,4 +21,17 @@ public class Xor extends BinaryExpression {
             this.getSecondExpression().assign(var, expression)
         );
     }
+    @Override
+    public Expression nandify() {
+        return new Or(
+            new And(
+                new Not(this.getFirstExpression().nandify()).nandify(),
+                this.getSecondExpression().nandify()
+            ).nandify(),
+            new And(
+                this.getFirstExpression().nandify(),
+                new Not(this.getSecondExpression().nandify()).nandify()
+            ).nandify()
+        ).nandify();
+    }
 }
