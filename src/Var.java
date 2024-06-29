@@ -17,6 +17,13 @@ public final class Var implements Expression {
     }
 
     /**
+     * Copy constructor of the Var class.
+     * @param var the Var to be copied
+     */
+    public Var(Var var) {
+        this(var.getName());
+    }
+    /**
      * Getter of the Name field.
      * @return the name field
      */
@@ -55,5 +62,10 @@ public final class Var implements Expression {
             return expression;
         }
         return new Var(this.name);
+    }
+
+    @Override
+    public Expression nandify() {
+        return new Var(this);
     }
 }
