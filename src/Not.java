@@ -26,6 +26,7 @@ public final class Not extends UnaryExpression {
     }
     @Override
     public Expression norify() {
-        return this.nandify().norify();
+        Expression expression = this.getExpression().norify();
+        return new Nor(expression, expression);
     }
 }

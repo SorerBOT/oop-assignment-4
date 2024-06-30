@@ -30,6 +30,8 @@ public class Or extends BinaryExpression {
     }
     @Override
     public Expression norify() {
-        return this.nandify().norify();
+        Expression first = new Nor(this.getFirstExpression().norify(), this.getSecondExpression().norify());
+
+        return new Nor(first, first);
     }
 }

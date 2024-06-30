@@ -36,7 +36,10 @@ public class And extends BinaryExpression {
     }
     @Override
     public Expression norify() {
-        return this.nandify().norify();
+        Expression first = this.getFirstExpression().norify();
+        Expression second = this.getSecondExpression().norify();
+
+        return new Nor(new Nor(first, first), new Nor(second, second));
     }
     // @Override
     // public Expression simplify() {

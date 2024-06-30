@@ -32,6 +32,6 @@ public class Nor extends BinaryExpression {
     }
     @Override
     public Expression norify() {
-        return this.nandify().norify();
+        return new Nor(this.getFirstExpression().norify(), this.getSecondExpression().norify());
     }
 }

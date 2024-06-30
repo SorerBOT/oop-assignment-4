@@ -31,6 +31,11 @@ public class Xor extends BinaryExpression {
     }
     @Override
     public Expression norify() {
-        return this.nandify().norify();
+        Expression first = this.getFirstExpression().norify();
+        Expression second = this.getSecondExpression().norify();
+        Expression norFirst = new Nor(first, first);
+        Expression norSecond = new Nor(second, second);
+        Expression norFirstSecond = new Nor(first, second);
+        return new Nor(new Nor(norFirst, norSecond), norFirstSecond);
     }
 }

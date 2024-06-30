@@ -33,6 +33,9 @@ public class Xnor extends BinaryExpression {
     }
     @Override
     public Expression norify() {
-        return this.nandify().norify();
+        Expression first = this.getFirstExpression().norify();
+        Expression second = this.getSecondExpression().norify();
+
+        return new Nor(new Nor(first, new Nor(first, second)), new Nor(second, new Nor(first, second)));
     }
 }

@@ -30,27 +30,11 @@ public class Nand extends BinaryExpression {
     }
     @Override
     public Expression norify() {
-        return new Nor(
-            new Nor(
-                new Nor(
-                    this.getFirstExpression().norify(),
-                    this.getFirstExpression().norify()
-                ),
-                new Nor(
-                    this.getSecondExpression().norify(),
-                    this.getSecondExpression().norify()
-                )
-            ),
-            new Nor(
-                new Nor(
-                    this.getFirstExpression().norify(),
-                    this.getFirstExpression().norify()
-                ),
-                new Nor(
-                    this.getSecondExpression().norify(),
-                    this.getSecondExpression().norify()
-                )
-            )
-        );
+        Expression first = this.getFirstExpression().norify();
+        Expression second = this.getSecondExpression().norify();
+        Expression norFirst = new Nor(first, first);
+        Expression norSecond = new Nor(second, second);
+
+        return new Nor(new Nor(norFirst, norSecond), new Nor(norFirst, norSecond));
     }
 }
