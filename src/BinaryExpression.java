@@ -10,7 +10,6 @@ import java.util.LinkedHashSet;
 public abstract class BinaryExpression extends BaseExpression {
     private final Expression firstExpression;
     private final Expression secondExpression;
-    private final String operator;
 
     /**
      * The constructor of the BinaryExpression class.
@@ -19,9 +18,9 @@ public abstract class BinaryExpression extends BaseExpression {
      * @param operator the symbol of the operator to be used
      */
     public BinaryExpression(Expression firstExpression, Expression secondExpression, String operator) {
+        super(operator);
         this.firstExpression = firstExpression;
         this.secondExpression = secondExpression;
-        this.operator = new String(operator);
     }
 
     @Override
@@ -75,7 +74,7 @@ public abstract class BinaryExpression extends BaseExpression {
 
     @Override
     public String toString() {
-        return "(" + this.firstExpression.toString() + this.operator + this.secondExpression.toString() + ")";
+        return "(" + this.firstExpression.toString() + this.getOperator() + this.secondExpression.toString() + ")";
     }
 
     @Override

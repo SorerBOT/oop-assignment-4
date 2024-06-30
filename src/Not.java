@@ -4,15 +4,13 @@ import java.util.List;
 /**
  * The Not class.
  */
-public final class Not implements Expression {
-    private final Expression expression;
-
+public final class Not extends UnaryExpression {
     /**
      * Constructor of the Not class.
      * @param expression the expression
      */
     public Not(Expression expression) {
-        this.expression = expression;
+        super(expression, "~");
     }
 
     @Override
