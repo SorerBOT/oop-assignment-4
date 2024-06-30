@@ -24,10 +24,10 @@ public class Nor extends BinaryExpression {
     @Override
     public Expression nandify() {
         return new Not(
-            new Or(
-                this.getFirstExpression().nandify(),
-                this.getSecondExpression().nandify()
-            ).nandify()
+            new Nand(
+                new Not(this.getFirstExpression().nandify()).nandify(),
+                new Not(this.getSecondExpression().nandify()).nandify()
+            )
         ).nandify();
     }
     @Override

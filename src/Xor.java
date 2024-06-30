@@ -23,16 +23,11 @@ public class Xor extends BinaryExpression {
     }
     @Override
     public Expression nandify() {
-        return new Or(
-            new And(
-                new Not(this.getFirstExpression().nandify()).nandify(),
-                this.getSecondExpression().nandify()
-            ).nandify(),
-            new And(
-                this.getFirstExpression().nandify(),
-                new Not(this.getSecondExpression().nandify()).nandify()
-            ).nandify()
-        ).nandify();
+        Nand nandAb = new Nand(this.getFirstExpression(), this.getSecondExpression());
+        return new Nand(
+            new Nand(this.getFirstExpression(), nandAb),
+            new Nand(this.getSecondExpression(), nandAb)
+        );
     }
     @Override
     public Expression norify() {

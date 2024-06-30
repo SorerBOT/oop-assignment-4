@@ -24,8 +24,8 @@ public class Or extends BinaryExpression {
     @Override
     public Expression nandify() {
         return new Nand(
-            new Not(this.getFirstExpression()).nandify(),
-            new Not(this.getSecondExpression()).nandify()
+            new Not(this.getFirstExpression().nandify()).nandify(),
+            new Not(this.getSecondExpression().nandify()).nandify()
         );
     }
     @Override

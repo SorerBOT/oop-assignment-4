@@ -23,12 +23,13 @@ public class Xnor extends BinaryExpression {
     }
     @Override
     public Expression nandify() {
-        return new Not(
-            new Xor(
-                this.getFirstExpression().nandify(),
-                this.getSecondExpression().nandify()
-            ).nandify()
-        ).nandify();
+        return new Nand(
+            new Nand(
+                new Not(this.getFirstExpression().nandify()).nandify(),
+                new Not(this.getSecondExpression().nandify()).nandify()
+            ),
+            new Nand(this.getFirstExpression().nandify(), this.getSecondExpression().nandify())
+        );
     }
     @Override
     public Expression norify() {
