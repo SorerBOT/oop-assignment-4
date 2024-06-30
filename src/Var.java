@@ -27,7 +27,7 @@ public final class Var implements Expression {
      * Getter of the Name field.
      * @return the name field
      */
-    public String getName() {
+    protected String getName() {
         return new String(this.name);
     }
     @Override
