@@ -16,56 +16,31 @@ public class ExpressionTest {
         Expression y = new Var("y");
         Expression z = new Var("z");
 
-        Expression ex = new Xnor(
-            new Nand(
+        Expression ex = new And(
+            new Or(
                 x,
-                new Val(false)
+                new And(y, new Val(true))
             ),
-            new Not(
-                new And(
-                    new Or(
-                        x,
-                        y
-                    ),
-                    new Xor(
-                        new Val(true),
-                        z
-                    )
-                )
-            )
+            new And(z, z)
         );
         // Printing the expression
         System.out.println(ex);
 
 
         // Assigning the three varialbes: x, y, z with boolean values
-        Expression e2 = ex.assign("x", new Val(true));
-        Expression e3 = e2.assign("y", new Val(false));
-        Expression e4 = e3.assign("z", new Val(false));
+        Expression ex2 = ex.assign("x", new Val(true));
+        Expression ex3 = ex2.assign("y", new Val(false));
+        Expression ex4 = ex3.assign("z", new Val(false));
         // Printing the expression after the assignment
-        System.out.println(e4);
+        System.out.println(ex4);
 
         // Printing the nandified version of the expression:
-        // System.out.println(ex.nandify());
+        System.out.println(ex.nandify());
 
         // Printing the norified version of the expression:
-        // System.out.println(ex.norify());
+        System.out.println(ex.norify());
 
         // Printing the simplified version of the expression:
-        // System.out.println(ex.simplify());
-
-        // System.out.println(ex.toString().equals("((x A F) # ~(((x | y) & (T ^ z))))"));
-        // HashMap<String, Boolean> map = new HashMap<>();
-        // map.put("x", true);
-        // map.put("y", false);
-        // map.put("z", false);
-        // try {
-        //     // Printing the expression
-        //     System.out.println(ex.evaluate(map) == false);
-        // } catch (Exception ignored) {
-        // }
-        // System.out.println(ex.nandify().toString().equals("((((x A F) A (x A F)) A ((((((x A x) A (y A y)) A ((T A (T A z)) A (z A (T A z)))) A (((x A x) A (y A y)) A ((T A (T A z)) A (z A (T A z))))) A ((((x A x) A (y A y)) A ((T A (T A z)) A (z A (T A z)))) A (((x A x) A (y A y)) A ((T A (T A z)) A (z A (T A z)))))) A (((((x A x) A (y A y)) A ((T A (T A z)) A (z A (T A z)))) A (((x A x) A (y A y)) A ((T A (T A z)) A (z A (T A z))))) A ((((x A x) A (y A y)) A ((T A (T A z)) A (z A (T A z)))) A (((x A x) A (y A y)) A ((T A (T A z)) A (z A (T A z)))))))) A ((x A F) A (((((x A x) A (y A y)) A ((T A (T A z)) A (z A (T A z)))) A (((x A x) A (y A y)) A ((T A (T A z)) A (z A (T A z))))) A ((((x A x) A (y A y)) A ((T A (T A z)) A (z A (T A z)))) A (((x A x) A (y A y)) A ((T A (T A z)) A (z A (T A z))))))))"));
-        // System.out.println(ex.norify().toString().equals("(((((x V x) V (F V F)) V ((x V x) V (F V F))) V ((((x V x) V (F V F)) V ((x V x) V (F V F))) V (((((x V y) V (x V y)) V ((x V y) V (x V y))) V ((((T V T) V (z V z)) V (T V z)) V (((T V T) V (z V z)) V (T V z)))) V ((((x V y) V (x V y)) V ((x V y) V (x V y))) V ((((T V T) V (z V z)) V (T V z)) V (((T V T) V (z V z)) V (T V z))))))) V ((((((x V y) V (x V y)) V ((x V y) V (x V y))) V ((((T V T) V (z V z)) V (T V z)) V (((T V T) V (z V z)) V (T V z)))) V ((((x V y) V (x V y)) V ((x V y) V (x V y))) V ((((T V T) V (z V z)) V (T V z)) V (((T V T) V (z V z)) V (T V z))))) V ((((x V x) V (F V F)) V ((x V x) V (F V F))) V (((((x V y) V (x V y)) V ((x V y) V (x V y))) V ((((T V T) V (z V z)) V (T V z)) V (((T V T) V (z V z)) V (T V z)))) V ((((x V y) V (x V y)) V ((x V y) V (x V y))) V ((((T V T) V (z V z)) V (T V z)) V (((T V T) V (z V z)) V (T V z))))))))"));
-        // System.out.println(ex.simplify().toString().equals("(T # ~(((x | y) & ~(z))))"));
+        System.out.println(ex.simplify());
     }
 }
