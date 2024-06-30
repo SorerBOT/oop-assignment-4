@@ -11,7 +11,7 @@ public class And extends BinaryExpression {
         super(firstExpression, secondExpression, "&");
     }
     @Override
-    public Boolean handleOperation(Boolean firstOperand, Boolean secondOperand) {
+    protected Boolean handleOperation(Boolean firstOperand, Boolean secondOperand) {
         return firstOperand && secondOperand;
     }
     @Override
