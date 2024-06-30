@@ -36,7 +36,7 @@ public class Val implements Expression {
 
     @Override
     public Expression assign(String var, Expression expression) {
-        return expression;
+        return new Val(this.value);
     }
 
     @Override
