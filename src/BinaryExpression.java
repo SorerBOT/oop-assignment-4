@@ -69,7 +69,13 @@ public abstract class BinaryExpression extends BaseExpression {
 
     @Override
     public String toString() {
-        return "(" + this.firstExpression.toString() + this.getOperator() + this.secondExpression.toString() + ")";
+        return
+            "("
+            + this.firstExpression.toString()
+            + " " + this.getOperator()
+            + " "
+            + this.secondExpression.toString()
+            + ")";
     }
 
     @Override
