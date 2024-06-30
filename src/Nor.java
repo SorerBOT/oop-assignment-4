@@ -11,7 +11,7 @@ public class Nor extends BinaryExpression {
         super(firstExpression, secondExpression, "V");
     }
     @Override
-    public Boolean handleOperation(Boolean firstOperand, Boolean secondOperand) {
+    protected Boolean handleOperation(Boolean firstOperand, Boolean secondOperand) {
         return !(firstOperand || secondOperand);
     }
     @Override
