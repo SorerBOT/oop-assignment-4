@@ -280,10 +280,4 @@ public class ExpressionsTests {
             fail("Exception thrown during evaluation: " + e.getMessage());
         }
     }
-    public static void main(String[] args) {
-        testAndEvaluate();
-        biuTest();
-        testSimplify();
-        evaluateTest();
-    }
 }
