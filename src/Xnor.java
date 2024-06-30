@@ -7,7 +7,7 @@ public class Xnor extends BinaryExpression {
      * @param firstExpression the first Expression
      * @param secondExpression the second Expression
      */
-    public Xnor(Expression firstExpression, Expression secondExpression) {
+    protected Xnor(Expression firstExpression, Expression secondExpression) {
         super(firstExpression, secondExpression, "#");
     }
     @Override

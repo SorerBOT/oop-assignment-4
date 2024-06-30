@@ -7,7 +7,7 @@ public class Nand extends BinaryExpression {
      * @param firstExpression the first Expression
      * @param secondExpression the second Expression
      */
-    public Nand(Expression firstExpression, Expression secondExpression) {
+    protected Nand(Expression firstExpression, Expression secondExpression) {
         super(firstExpression, secondExpression, "A");
     }
     @Override

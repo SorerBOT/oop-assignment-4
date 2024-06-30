@@ -7,7 +7,7 @@ public class Or extends BinaryExpression {
      * @param firstExpression the first Expression
      * @param secondExpression the second Expression
      */
-    public Or(Expression firstExpression, Expression secondExpression) {
+    protected Or(Expression firstExpression, Expression secondExpression) {
         super(firstExpression, secondExpression, "|");
     }
     @Override

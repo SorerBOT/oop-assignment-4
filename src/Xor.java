@@ -7,7 +7,7 @@ public class Xor extends BinaryExpression {
      * @param firstExpression the first Expression
      * @param secondExpression the second Expression
      */
-    public Xor(Expression firstExpression, Expression secondExpression) {
+    protected Xor(Expression firstExpression, Expression secondExpression) {
         super(firstExpression, secondExpression, "^");
     }
     @Override

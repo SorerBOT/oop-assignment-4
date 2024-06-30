@@ -7,7 +7,7 @@ public class Nor extends BinaryExpression {
      * @param firstExpression the first Expression
      * @param secondExpression the second Expression
      */
-    public Nor(Expression firstExpression, Expression secondExpression) {
+    protected Nor(Expression firstExpression, Expression secondExpression) {
         super(firstExpression, secondExpression, "V");
     }
     @Override

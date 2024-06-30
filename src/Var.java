@@ -12,7 +12,7 @@ public final class Var implements Expression {
      * Constructor of the Var class.
      * @param name the name of the Var
      */
-    public Var(String name) {
+    protected Var(String name) {
         this.name = new String(name);
     }
 

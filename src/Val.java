@@ -10,7 +10,7 @@ public class Val implements Expression {
      * The constructor of the Val class.
      * @param value the value of the Val
      */
-    public Val(Boolean value) {
+    protected Val(Boolean value) {
         this.value = value;
     }
 
