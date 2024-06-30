@@ -11,7 +11,7 @@ public final class Not extends UnaryExpression {
     }
 
     @Override
-    public Boolean handleOperation(Boolean operand) {
+    protected Boolean handleOperation(Boolean operand) {
         return !operand;
     }
 
