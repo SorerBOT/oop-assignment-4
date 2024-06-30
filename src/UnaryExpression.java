@@ -2,9 +2,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * The BaseExpression class.
+ * The UnaryExpression class.
  */
-public abstract class BaseExpression implements Expression {
+public abstract class UnaryExpression extends BaseExpression {
     /**
      * Determines whether the expressions are visually identical.
      * @param expression the expression to be compared with

@@ -7,7 +7,7 @@ import java.util.LinkedHashSet;
 /**
  * The BinaryExpression class.
  */
-public abstract class BinaryExpression implements Expression {
+public abstract class BinaryExpression extends BaseExpression {
     private final Expression firstExpression;
     private final Expression secondExpression;
     private final String operator;
@@ -24,6 +24,10 @@ public abstract class BinaryExpression implements Expression {
         this.operator = new String(operator);
     }
 
+    @Override
+    public Boolean equals(Expression expression) {
+        return this.toString().equals(expression.toString());
+    }
     /**
      * Applies the binary operation to the operands.
      * @param firstOperand the first operand
