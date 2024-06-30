@@ -21,12 +21,6 @@ public abstract class BaseExpression implements Expression {
     public String getOperator() {
         return new String(this.operator);
     }
-    /**
-     * Determines whether the expressions are visually identical.
-     * @param expression the expression to be compared with
-     * @return true if the expressions are equal and false otherwise
-     */
-    public abstract Boolean equals(Expression expression);
     @Override
     public abstract Boolean evaluate(Map<String, Boolean> assignment) throws Exception;
 
@@ -48,6 +42,6 @@ public abstract class BaseExpression implements Expression {
     @Override
     public abstract Expression norify();
 
-    @Override
-    public abstract Expression simplify();
+    // @Override
+    // public abstract Expression simplify();
 }

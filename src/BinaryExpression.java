@@ -22,11 +22,6 @@ public abstract class BinaryExpression extends BaseExpression {
         this.firstExpression = firstExpression;
         this.secondExpression = secondExpression;
     }
-
-    @Override
-    public Boolean equals(Expression expression) {
-        return this.toString().equals(expression.toString());
-    }
     /**
      * Applies the binary operation to the operands.
      * @param firstOperand the first operand

@@ -33,11 +33,6 @@ public abstract class UnaryExpression extends BaseExpression {
     }
 
     @Override
-    public Boolean equals(Expression expression) {
-        return this.toString().equals(expression.toString());
-    }
-
-    @Override
     public Boolean evaluate(Map<String, Boolean> assignment) throws Exception {
         return handleOperation(this.expression.evaluate(assignment));
     }

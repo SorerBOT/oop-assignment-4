@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * The Var class.
  */
-public final class Var extends UnaryExpression {
+public final class Var implements Expression {
     private final String name;
 
     /**
