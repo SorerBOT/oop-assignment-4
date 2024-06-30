@@ -34,4 +34,28 @@ public class And extends BinaryExpression {
     public Expression norify() {
         return this.nandify().norify();
     }
+    @Override
+    public Expression simplify() {
+        try {
+            // 1 and x case
+            if (this.getFirstExpression().evaluate()) {
+                return this.getSecondExpression().simplify();
+            }
+            // 0 and x case
+            return new Val(false);
+        } catch (Exception error) {
+            System.err.println(error);
+        }
+
+        try {
+            // x and 1 case
+            if (this.getSecondExpression().evaluate()) {
+                return this.getFirstExpression().simplify();
+            }
+            // x and 0 case
+            return new Val(false);
+        } catch (Exception error) {
+            System.err.println(error);
+        }
+    }
 }

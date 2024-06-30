@@ -52,14 +52,20 @@ public interface Expression {
     Expression assign(String var, Expression expression);
 
     /**
-     * Nandifies the expression.
+     * Nandifies the Expression.
      * @return the nandified expression
      */
     Expression nandify();
 
     /**
-     * Norifies the expression.
-     * @return the norified expression
+     * Norifies the Expression.
+     * @return the norified Expression
      */
     Expression norify();
+
+    /**
+     * Simplifies the Expression.
+     * @return the simplified Expression
+     */
+    Expression simplify();
 }
