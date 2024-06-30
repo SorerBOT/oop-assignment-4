@@ -67,5 +67,5 @@ public interface Expression {
      * Simplifies the Expression.
      * @return the simplified Expression
      */
-    //Expression simplify();
+    Expression simplify();
 }

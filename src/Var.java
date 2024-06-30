@@ -73,4 +73,9 @@ public final class Var implements Expression {
     public Expression norify() {
         return new Var(this);
     }
+
+    @Override
+    public Expression simplify() {
+        return new Var(this);
+    }
 }

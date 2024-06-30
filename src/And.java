@@ -41,11 +41,28 @@ public class And extends BinaryExpression {
 
         return new Nor(new Nor(first, first), new Nor(second, second));
     }
-    // @Override
-    // public Expression simplify() {
-    //     if (this.getFirstExpression().toString().equals(this.getSecondExpression().toString())) {
-    //         return this.getFirstExpression();
-    //     }
-    //     return null;
-    // }
+    @Override
+    public Expression simplify() {
+        Expression firstSimplified = this.getFirstExpression().simplify();
+        Expression secondSimplified = this.getSecondExpression().simplify();
+
+        // x & x => x case
+        if (firstSimplified.toString().equals(secondSimplified.toString())) {
+            return firstSimplified;
+        }
+        // x & 0, 0 & x => 0
+        if (firstSimplified.toString().equals("F") || secondSimplified.toString().equals("F")) {
+            return new Val(false);
+        }
+        // 1 & x => x
+        if (firstSimplified.toString().equals("T")) {
+            return secondSimplified;
+        }
+        // x & 1 => x
+        if (secondSimplified.toString().equals("T")) {
+            return firstSimplified;
+        }
+
+        return new And(firstSimplified, secondSimplified);
+    }
 }

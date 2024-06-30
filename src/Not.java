@@ -29,4 +29,17 @@ public final class Not extends UnaryExpression {
         Expression expression = this.getExpression().norify();
         return new Nor(expression, expression);
     }
+    @Override
+    public Expression simplify() {
+        Expression firstSimplified = this.getExpression().simplify();
+        // ~F => T
+        if (firstSimplified.toString().equals("F")) {
+            return new Val(true);
+        }
+        // ~T => F
+        if (firstSimplified.toString().equals("T")) {
+            return new Val(false);
+        }
+        return new Not(firstSimplified);
+    }
 }

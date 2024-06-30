@@ -37,4 +37,32 @@ public class Nand extends BinaryExpression {
 
         return new Nor(new Nor(norFirst, norSecond), new Nor(norFirst, norSecond));
     }
+    @Override
+    public Expression simplify() {
+        Expression firstSimplified = this.getFirstExpression().simplify();
+        Expression secondSimplified = this.getSecondExpression().simplify();
+
+        // 1 A 1 => F
+        if (firstSimplified.toString().equals("T") && secondSimplified.toString().equals("T")) {
+            return new Val(false);
+        }
+        // x A 0, 0 A x => T
+        if (firstSimplified.toString().equals("F") || secondSimplified.toString().equals("F")) {
+            return new Val(true);
+        }
+        // 1 A x => ~x
+        if (firstSimplified.toString().equals("T")) {
+            return new Not(secondSimplified);
+        }
+        // x A 1 => ~x
+        if (secondSimplified.toString().equals("T")) {
+            return new Not(firstSimplified);
+        }
+        // x A x => ~x
+        if (firstSimplified.toString().equals(secondSimplified.toString())) {
+            return new Not(firstSimplified);
+        }
+
+        return new Nand(firstSimplified, secondSimplified);
+    }
 }

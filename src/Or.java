@@ -34,4 +34,29 @@ public class Or extends BinaryExpression {
 
         return new Nor(first, first);
     }
+    @Override
+    public Expression simplify() {
+        Expression firstSimplified = this.getFirstExpression().simplify();
+        Expression secondSimplified = this.getSecondExpression().simplify();
+
+        // x | x => x
+        if (firstSimplified.toString().equals(secondSimplified.toString())) {
+            return firstSimplified;
+        }
+        // T | x, x | T => T
+        if (firstSimplified.toString().equals("T") || secondSimplified.toString().equals("T")) {
+            return new Val(true);
+        }
+        // F | x => x
+        if (firstSimplified.toString().equals("F")) {
+            return secondSimplified;
+        }
+        // x | F => F
+        if (secondSimplified.toString().equals("F")) {
+            return firstSimplified;
+        }
+
+
+        return new Or(firstSimplified, secondSimplified);
+    }
 }

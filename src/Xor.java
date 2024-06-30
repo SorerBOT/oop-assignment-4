@@ -38,4 +38,43 @@ public class Xor extends BinaryExpression {
         Expression norFirstSecond = new Nor(first, second);
         return new Nor(new Nor(norFirst, norSecond), norFirstSecond);
     }
+
+    @Override
+    public Expression simplify() {
+      Expression firstSimplified = this.getFirstExpression().simplify();
+      Expression secondSimplified = this.getSecondExpression().simplify();
+
+      // T ^ F, F ^ T => T
+      if ((firstSimplified.toString().equals("T") && secondSimplified.toString().equals("F"))
+      || (firstSimplified.toString().equals("F") && secondSimplified.toString().equals("T"))) {
+        return new Val(true);
+      }
+
+      // x ^ x => F
+      if (firstSimplified.toString().equals(secondSimplified.toString())) {
+        return new Val(false);
+      }
+
+      // 1 ^ x => ~x
+      if (firstSimplified.toString().equals("T")) {
+        return new Not(secondSimplified);
+      }
+
+      // x ^ 1 => ~x
+      if (secondSimplified.toString().equals("T")) {
+        return new Not(firstSimplified);
+      }
+
+      // 0 ^ x => x
+      if (firstSimplified.toString().equals("F")) {
+        return secondSimplified;
+      }
+
+      // x ^ 0 => x
+      if (secondSimplified.toString().equals("F")) {
+        return firstSimplified;
+      }
+
+      return new Xor(firstSimplified, secondSimplified);
+  }
 }

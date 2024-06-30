@@ -38,4 +38,21 @@ public class Xnor extends BinaryExpression {
 
         return new Nor(new Nor(first, new Nor(first, second)), new Nor(second, new Nor(first, second)));
     }
+    @Override
+    public Expression simplify() {
+        Expression firstSimplified = this.getFirstExpression().simplify();
+        Expression secondSimplified = this.getSecondExpression().simplify();
+
+        // F # x, x # F => F
+        if ((firstSimplified.toString().equals("T") && secondSimplified.toString().equals("F"))
+        || (firstSimplified.toString().equals("F") && secondSimplified.toString().equals("T"))) {
+            return new Val(false);
+        }
+
+        // x # x => T
+        if (firstSimplified.toString().equals(secondSimplified.toString())) {
+            return new Val(true);
+        }
+        return new Xnor(firstSimplified, secondSimplified);
+    }
 }
