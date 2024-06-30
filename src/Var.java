@@ -53,7 +53,7 @@ public final class Var implements Expression {
 
     @Override
     public String toString() {
-        return this.name;
+        return new String(this.name);
     }
 
     @Override

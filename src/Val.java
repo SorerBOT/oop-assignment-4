@@ -20,7 +20,7 @@ public class Val implements Expression {
     }
 
     @Override
-    public Boolean evaluate() {
+    public Boolean evaluate() throws Exception {
         return this.value;
     }
 
