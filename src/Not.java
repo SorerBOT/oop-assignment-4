@@ -31,15 +31,15 @@ public final class Not extends UnaryExpression {
     }
     @Override
     public Expression simplify() {
-        Expression firstSimplified = this.getExpression().simplify();
+        Expression expressionSimplified = this.getExpression().simplify();
         // ~F => T
-        if (firstSimplified.toString().equals("F")) {
+        if (expressionSimplified.toString().equals("F")) {
             return new Val(true);
         }
         // ~T => F
-        if (firstSimplified.toString().equals("T")) {
+        if (expressionSimplified.toString().equals("T")) {
             return new Val(false);
         }
-        return new Not(firstSimplified);
+        return new Not(expressionSimplified);
     }
 }
