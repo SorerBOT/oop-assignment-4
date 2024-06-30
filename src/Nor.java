@@ -36,13 +36,6 @@ public class Nor extends BinaryExpression {
     }
     @Override
     public Expression simplify() {
-          /**
-         * simplify the sub expressions and check if one of them has a value/copy of the other.
-         * simplification rules:
-         * x V 1 = 0
-         * x V 0 = ~(x)
-         * x V x = x
-         */
         Expression firstSimplified = this.getFirstExpression().simplify();
         Expression secondSimplified = this.getSecondExpression().simplify();
 
