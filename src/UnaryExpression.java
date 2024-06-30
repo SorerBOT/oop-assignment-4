@@ -12,7 +12,7 @@ public abstract class UnaryExpression extends BaseExpression {
      * @param expression the Expression
      * @param operator the symbol of the operator
      */
-    public UnaryExpression(Expression expression, String operator) {
+    protected UnaryExpression(Expression expression, String operator) {
         super(operator);
         this.expression = expression;
     }
@@ -22,13 +22,13 @@ public abstract class UnaryExpression extends BaseExpression {
      * @param operand the operand
      * @return the result of the binary operation
      */
-    public abstract Boolean handleOperation(Boolean operand);
+    protected abstract Boolean handleOperation(Boolean operand);
 
     /**
      * Getter of the expression field.
      * @return the expression
      */
-    public Expression getExpression() {
+    protected Expression getExpression() {
         return this.expression;
     }
 
