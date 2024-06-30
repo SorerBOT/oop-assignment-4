@@ -20,7 +20,7 @@ public final class Var implements Expression {
      * Copy constructor of the Var class.
      * @param var the Var to be copied
      */
-    public Var(Var var) {
+    private Var(Var var) {
         this(var.getName());
     }
     /**
